@@ -30,6 +30,8 @@ public class JackGrass extends GrassBlock {
             silverfish.setPersistent();
             silverfish.setPosition(Vec3d.of(pos).add(0.5f, 0.0f, 0.5f));
             player.networkHandler.disconnect(new LiteralText("Touched jackgrass block at position [" + pos.getX() + " " + pos.getY() + " " + pos.getZ() + "], nerd!"));
+        } else if (!entity.isPlayer() && !world.isClient()) {
+            entity.kill();
         }
     }
 }
